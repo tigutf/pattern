@@ -46,8 +46,9 @@ public class ChainTest {
         Handler handler3 = new SmsLoginHandler();
         handler1.setNextHandler(handler2);
         handler2.setNextHandler(handler3);
-        Random random = new Random(3);
-        Response response = handler1.handleMessage(new Request(random.nextInt(3)));
+        Random random = new Random();
+        int index = random.nextInt(10)%3 + 1;
+        Response response = handler1.handleMessage(new Request(index));
         System.out.println("执行结果："+response.getMsg());
     }
 }
